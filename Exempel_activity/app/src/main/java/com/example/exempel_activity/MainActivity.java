@@ -35,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.e("ActivityTest", "Innan activity!");
+
                 Intent i = new Intent(MainActivity.this, activity_test1.class);
                 startActivity(i);
+
                 Log.e("ActivityTest", "Efter activity!");
             }
         });
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private void startActivity2(){
-        Intent i = new Intent(this, activity_test2.class);
+        Intent i = new Intent(MainActivity.this, activity_test2.class);
         startActivity(i);
     }
 }
