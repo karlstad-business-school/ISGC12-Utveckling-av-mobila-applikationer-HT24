@@ -2,7 +2,7 @@ package com.example.exempel_intent_skicka_data;
 
 import java.io.Serializable;
 
-public class Human implements Serializable {
+public class Human  implements Serializable {
 
     private String name;
     private int age;

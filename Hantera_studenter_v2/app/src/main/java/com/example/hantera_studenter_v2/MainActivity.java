@@ -1,5 +1,6 @@
 package com.example.hantera_studenter_v2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        studentList.setText(Database.instance.printStudents());
+    }
+
 
 
     public void removeStudent(View view){
@@ -60,6 +67,17 @@ public class MainActivity extends AppCompatActivity {
         Database.instance.remove(id);
 
         studentList.setText(Database.instance.printStudents());
+    }
+
+
+    public void searchStudent(View view){
+        Intent intent = new Intent(MainActivity.this, StudentView.class);
+
+        EditText sID = findViewById(R.id.search_id);
+        int id = Integer.parseInt(sID.getText().toString());
+
+        intent.putExtra("id" , id);
+        startActivity(intent);
     }
 
 }

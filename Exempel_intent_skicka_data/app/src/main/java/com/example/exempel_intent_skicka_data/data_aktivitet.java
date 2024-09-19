@@ -29,6 +29,7 @@ public class data_aktivitet extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String str = "";
         str = extras.getString("text_string");
+
         int number = getIntent().getIntExtra("text_int", -1);
 
 

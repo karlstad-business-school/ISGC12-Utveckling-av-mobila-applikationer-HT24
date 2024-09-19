@@ -38,7 +38,6 @@ public class objekt_aktivitet extends AppCompatActivity {
         if(human.isStudent() == false){
             isStudent = "Är inte student";
         }
-        nameTV.setText(isStudent);
-
+        objTV.setText(isStudent);
     }
 }

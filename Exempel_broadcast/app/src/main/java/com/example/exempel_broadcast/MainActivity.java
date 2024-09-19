@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void send(View view){
         Intent intent = new Intent();
         intent.setAction(BROADCAST_ACTION);
