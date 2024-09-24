@@ -11,6 +11,8 @@ public class MyBackgroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
 
+        //Här var felet.
+        //Försökte att skicka intent, men man behöver skicka med contexted vilket är "this" i en service
         MyAsyncTask mat = new  MyAsyncTask(this);
         mat.execute();
 
