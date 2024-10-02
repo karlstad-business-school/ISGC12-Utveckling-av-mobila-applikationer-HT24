@@ -25,7 +25,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private final String API_KEY = "ADD_API_KEY_HERE";
+    private final String API_KEY = "YOU_API_KEY";
     private TextView cityText, sunText, setText, tempText;
     private EditText cityET;
     private Button searchButton;
@@ -79,14 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             int parserEvent = parser.getEventType();
-            String tagName;
+            String tagName = "";
 
             Log.e("TAG", "getData: ");
 
             while(parserEvent != XmlPullParser.END_DOCUMENT){
                 if(parserEvent == XmlPullParser.START_TAG){
                     tagName = parser.getName();
-                    Log.e("TAG", "tag: " + tagName);
                     if(tagName.contains("city")){
                         String name = parser.getAttributeValue(null, "name");
 
