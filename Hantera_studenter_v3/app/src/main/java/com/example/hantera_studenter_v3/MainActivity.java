@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText idET, nameET, pnrET;
@@ -32,12 +34,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         new Database();
+        new DataManager();
+
+        ArrayList<Student> students = new ArrayList<Student>();
+        students = DataManager.instance.readFromFile(MainActivity.this);
+
+        Database.instance.setStudents(students);
+
+
 
         idET = findViewById(R.id.student_id);
         nameET = findViewById(R.id.student_name);
         pnrET = findViewById(R.id.student_pnr);
         addBtn = findViewById(R.id.add_btn);
         studentList = findViewById(R.id.student_list);
+
+
+        studentList.setText(Database.instance.printStudents());
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 Student s = new Student(id, name, pnr);
 
                 Database.instance.add(s);
+                DataManager.instance.writeToFile(MainActivity.this, Database.instance.getStudents());
+
                 studentList.setText(Database.instance.printStudents());
             }
         });
@@ -65,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         EditText rID = findViewById(R.id.remove_id);
         int id = Integer.parseInt(rID.getText().toString());
         Database.instance.remove(id);
+
+        DataManager.instance.writeToFile(MainActivity.this, Database.instance.getStudents());
 
         studentList.setText(Database.instance.printStudents());
     }

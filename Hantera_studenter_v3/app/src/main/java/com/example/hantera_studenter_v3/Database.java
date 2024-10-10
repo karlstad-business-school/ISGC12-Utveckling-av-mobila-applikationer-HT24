@@ -57,4 +57,8 @@ public class Database {
     public ArrayList<Student> getStudents(){
         return this.students;
     }
+
+    public void setStudents(ArrayList<Student> students){
+        this.students = students;
+    }
 }

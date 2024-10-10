@@ -26,6 +26,7 @@ public class StudentView extends AppCompatActivity {
             return insets;
         });
 
+
         TextView idText = findViewById(R.id.student_id);
         TextView nameText = findViewById(R.id.student_name);
         TextView pnrText = findViewById(R.id.student_pnr);
@@ -56,6 +57,9 @@ public class StudentView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Database.instance.remove(id);
+
+                DataManager.instance.writeToFile(StudentView.this, Database.instance.getStudents());
+
                 finish();
             }
         });

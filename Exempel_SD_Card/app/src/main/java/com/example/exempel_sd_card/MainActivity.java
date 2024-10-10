@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             byte[] data = text.getBytes(StandardCharsets.UTF_8);
             fos = new FileOutputStream(file);
             fos.write(data);
+
             fos.flush();
             fos.close();
 
