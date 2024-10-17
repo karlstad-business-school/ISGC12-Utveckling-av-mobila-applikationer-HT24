@@ -83,11 +83,15 @@
             android:layout_height="wrap_content"
             android:text="Spara"/>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/student_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"/>
+            android:textSize="16dp"/>-->
+        <ListView
+            android:id="@+id/student_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
         <LinearLayout

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText idET, nameET, pnrET;
     private Button addBtn;
-    private TextView studentList;
-
+    //private TextView studentList;
+    private ListView studentList;
+    private StudentListAdapter sla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
         addBtn = findViewById(R.id.add_btn);
         studentList = findViewById(R.id.student_list);
 
+        sla = new StudentListAdapter(MainActivity.this, R.layout.list_item, Database.instance.getStudents());
+        studentList.setAdapter(sla);
 
-        studentList.setText(Database.instance.printStudents());
+
+
+        //studentList.setText(Database.instance.printStudents());
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 Database.instance.add(s);
                 DataManager.instance.writeToFile(MainActivity.this, Database.instance.getStudents());
 
-                studentList.setText(Database.instance.printStudents());
+                //studentList.setText(Database.instance.printStudents());
             }
         });
     }
@@ -72,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        studentList.setText(Database.instance.printStudents());
+        //studentList.setText(Database.instance.printStudents());
     }
 
 
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataManager.instance.writeToFile(MainActivity.this, Database.instance.getStudents());
 
-        studentList.setText(Database.instance.printStudents());
+        //studentList.setText(Database.instance.printStudents());
     }
 
 
